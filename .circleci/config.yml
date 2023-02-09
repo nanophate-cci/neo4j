@@ -1,0 +1,10 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: cimg/base:stable
+      - image: neo4j:4.4.9-community
+  step:
+    - checkout 
+    - run: echo "hello"
+    - run: dockerize -wait tcp://localhost:7474 -timeout 1m
